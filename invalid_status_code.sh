@@ -8,7 +8,7 @@
 #           //Action
 #     done < targets.txt
 
-targets=(www.google.com www.fb.com 127.0.0.1  https://regex101.com/retry shubham.github.io http://localhost https://regex101.com/fun)
+targets=(www.google.com www.fb.com www.fb.com www.fb.com 127.0.0.1 https://regex101.com/retry shubham.github.io http://localhost https://regex101.com/fun)
 
 invalid_status=(300 301 302 400 403 404)
 rm target.txt
@@ -20,11 +20,11 @@ for target in ${targets[@]}; do
   for status in ${invalid_status[@]}; do
          if [ $status -eq $count ]
          then
-           echo $t >> target.txt
+           echo "$target-($status)" >> target.txt
         # else
         #    echo "else condition if any"
          fi
   done
 done
-
+echo ""
 uniq -c target.txt | awk '{print $2": "$1}'
