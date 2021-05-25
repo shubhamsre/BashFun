@@ -27,4 +27,4 @@ for target in ${targets[@]}; do
   done
 done
 
-uniq -c abc.txt | awk '{print $2": "$1}'
+uniq -c target.txt | awk '{print $2": "$1}'
